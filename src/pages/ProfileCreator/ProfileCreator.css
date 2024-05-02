@@ -1,0 +1,79 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Times New Roman', Times, serif;
+}
+body{
+    height: 100vh;
+}
+nav.menu_lateral{
+    width: 300px;
+    height: 100%;
+    background-color: #202020;
+    padding: 40px 0px 40px 1%;
+    box-shadow: 3px 0 0 rgb(65, 78, 131);
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+.btn_expandir{
+    width: 100%;
+    padding-left: 10px;
+}
+.btn_expandir > i{
+    color: #fff;
+    font-size: 24px;
+    cursor: pointer;
+}
+ul{
+    width: 100%;
+    list-style-type: none;
+}
+ul li.iten_menu{
+    transition: .2s;
+}
+ul li.iten_menu:hover{
+    background-color: rgb(65, 78, 131);
+}
+ul li.iten_menu a{
+    color: #fff;
+    text-decoration: none;
+    font-size: 20px;
+    padding: 20px 4%;
+    display: flex;
+    margin-bottom: 20px;
+}
+ul li.iten_menu a .txt-link{
+    margin-left: 20px;
+}
+ul li.iten_menu a .icon > i{
+    font-size: 30px;
+    line-height: 40px;
+}
+.campoCreate{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background-color: #fff;
+    padding: 20px;
+    margin-left: 300px;
+    align-items: center;
+    justify-content: center;
+    
+}
+label{
+    margin-bottom: 10px;
+}
+input {
+    padding: 5px;
+    margin-bottom: 10px;
+    width: 500px;
+}
+button {
+    padding: 10px 20px;
+    border: none;
+    background-color: rgb(65, 78, 131);
+    color: white;
+    cursor: pointer;
+}
