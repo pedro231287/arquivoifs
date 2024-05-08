@@ -47,7 +47,15 @@ class AddDocument extends Component {
                             </div>
                         </Link>
                     </li>
-                    <li>
+                    <li class="iten_menu">
+                        <Link to="/lixeira">
+                            <div>
+                                <span class="icon"><i class="bi bi-file-earmark"></i></span>
+                                <span class="txt-link">Lixeira</span>
+                            </div>
+                        </Link>
+                    </li>
+                    <li class="iten_menu">
                         <Link to="/">
                             <div>
                                     <span class="icon"><i class="bi bi-file-earmark"></i></span>
@@ -61,11 +69,11 @@ class AddDocument extends Component {
         <div class="campoAdd">
             
             <h1>ADIÇÃO DE NOVO DOCUMENTO</h1>
-            
-                <label>FUNDO"tabela de escolha"</label>
+            <br/>
+                <label>FUNDO</label>
                 <input type="text" placeholder="Fundo"/>
             
-                <label>UNIDADE"tabela de escolha"</label>
+                <label>UNIDADE</label>
                 <input type="text" placeholder="Unidade"/>
             
                 <label>ESPÉCIE</label>

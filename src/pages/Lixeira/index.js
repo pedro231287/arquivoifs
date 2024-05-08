@@ -1,23 +1,22 @@
-
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import './SearchDocument.css';
+import './Lixeira.css';
 
 
-class SearhDocument extends Component {
+class Lixeira extends Component {
 
  
 
   render() {
 
     return (
-<html> 
+<html>
     <head>
-        <title>PESQUISAR DOCUMENTO</title>
+        <title>CRIAR PERFIL</title>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"></link>
-    </head> 
+    </head>
     <body>
-    
+        
         <nav class="menu_lateral">
             <div class="btn_expandir">
                 <i class="bi bi-list"></i>
@@ -66,51 +65,43 @@ class SearhDocument extends Component {
             </ul>
         </nav>
         
-        <div class="campoSearch">
-            <h1>PESQUISA E EDIÇÃO</h1>
-            <br/>
-            <label>Tipo de Arquivo:</label>
-            <select>
-                <option value="vazio">-</option>
-                <option value="Corrente">Corrente</option>
-                <option value="Intermediario">Intermediário</option>
-                <option value="Permanente">Permanente</option>
-            </select>
-            
-            <label>Nome completo</label>
-            <input type="text" placeholder="email"/>
-            
-            <label>Setor/campus</label>
-            <input type="text" placeholder="senha"/>
-            
-            <label>E-mail</label>
-            <input type="text" placeholder="nome"/>
-            
-            <label>Telefone</label>
-            <input type="text" placeholder="Telefone"/>                
-            
-            <label>portaria nº</label>
-            <input type="text" placeholder="Portaria"/>
-            
-            <label>Ano</label>
-            <input type="text" placeholder="Ano"/>
-                
-            <label>projeto pedagógico</label>
-            <input type="text" placeholder="Projeto Pedagógico"/>
-            
-            <label>Curso</label>
-            <input type="text" placeholder="Curso"/>        
-
-            <button>Pesquisar</button>
+        <div class="campoLixeira">
+        <h1>Lixeira</h1>
+        <table class="tabela-arquivos">
+            <thead>
+                <tr>
+                    <th>Nome do Arquivo</th>
+                    <th>Usuário</th>
+                    <th>Data de Eliminação</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Documento.txt</td>
+                    <td>João Silva</td>
+                    <td>2024-05-07</td>
+                </tr>
+                <tr>
+                    <td>Foto.jpg</td>
+                    <td>Maria Oliveira</td>
+                    <td>2024-05-06</td>
+                </tr>
+                <tr>
+                    <td>Planilha.xlsx</td>
+                    <td>Pedro Souza</td>
+                    <td>2024-05-05</td>
+                </tr>
+            </tbody>
+        </table>
+        <button id="limpar">Esvaziar</button>
         </div>
         
     </body>
 </html>
-
     );
 
   }
 
 }
 
-export default SearhDocument;
+export default Lixeira;

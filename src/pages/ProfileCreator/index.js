@@ -47,7 +47,15 @@ class ProfileCreator extends Component {
                             </div>
                         </Link>
                     </li>
-                    <li>
+                    <li class="iten_menu">
+                        <Link to="/lixeira">
+                            <div>
+                                <span class="icon"><i class="bi bi-file-earmark"></i></span>
+                                <span class="txt-link">Lixeira</span>
+                            </div>
+                        </Link>
+                    </li>
+                    <li class="iten_menu">
                         <Link to="/">
                             <div>
                                     <span class="icon"><i class="bi bi-file-earmark"></i></span>
@@ -60,8 +68,8 @@ class ProfileCreator extends Component {
         
         <div class="campoCreate">
             <h1>CADASTRO DE USUÁRIOS</h1>
-           
-            <label>Email</label>
+            <br/>
+            <label>Emaill</label>
             <input type="text" placeholder="email"></input>
             
             <label>Senha</label>
@@ -73,7 +81,7 @@ class ProfileCreator extends Component {
             <label>CPF</label>
             <input type="text" placeholder="CFP"></input>
             
-            <button>Entrar</button>
+            <button>Criar</button>
         </div>
         
     </body>

@@ -51,28 +51,31 @@ ul li.iten_menu a .icon > i{
     font-size: 30px;
     line-height: 40px;
 }
-.campoSearch{
+.campoLixeira{
     display: flex;
     flex-direction: column;
-    height: 125vh;
+    height: 100vh;
     background-color: #fff;
     padding: 20px;
     margin-left: 300px;
     align-items: center;
     justify-content: center;
+    
 }
-label{
-    margin-bottom: 10px;
+.tabela-arquivos {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 30px;
+    margin-top: 30px;
 }
-input, select {
-    padding: 5px;
-    margin-bottom: 10px;
-    width: 500px;
+
+.tabela-arquivos th,
+.tabela-arquivos td {
+    border: 1px solid #ddd;
+    padding: 8px;
 }
-button {
-    padding: 10px 20px;
-    border: none;
-    background-color: rgb(65, 78, 131);
-    color: white;
-    cursor: pointer;
+
+.tabela-arquivos th {
+    text-align: left;
+    background-color: #f0f0f0;
 }
