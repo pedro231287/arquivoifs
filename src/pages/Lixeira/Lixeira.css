@@ -11,7 +11,7 @@ nav.menu_lateral{
     width: 300px;
     height: 100%;
     background-color: #202020;
-    padding: 40px 0px 40px 1%;
+    padding: 20px 0px 20px 0px;
     box-shadow: 3px 0 0 rgb(65, 78, 131);
     position: fixed;
     top: 0;
@@ -40,9 +40,10 @@ ul li.iten_menu a{
     color: #fff;
     text-decoration: none;
     font-size: 20px;
-    padding: 20px 4%;
     display: flex;
-    margin-bottom: 20px;
+}
+.iten_menu{
+    padding: 10px 4%;
 }
 ul li.iten_menu a .txt-link{
     margin-left: 20px;
@@ -73,9 +74,9 @@ ul li.iten_menu a .icon > i{
 .tabela-arquivos td {
     border: 1px solid #ddd;
     padding: 8px;
+    text-align: center;
 }
 
 .tabela-arquivos th {
-    text-align: left;
     background-color: #f0f0f0;
 }

@@ -23,9 +23,17 @@ class Lixeira extends Component {
             </div>
             <ul>
                     <li class="iten_menu">
+                        <Link to="/perfil">
+                            <div>
+                                    <span class="icon"><i class="bi bi-person-circle"></i></span>
+                                    <span class="txt-link">Perfil</span>
+                            </div>
+                        </Link>
+                    </li>
+                    <li class="iten_menu">
                         <Link to="/createProfile">
                             <div>
-                                <span class="icon"><i class="bi bi-house"></i></span>
+                                <span class="icon"><i class="bi bi-person-plus-fill"></i></span>
                                 <span class="txt-link">Cadastro de usuário</span>
                             </div>
                         </Link>
@@ -33,7 +41,7 @@ class Lixeira extends Component {
                     <li class="iten_menu">
                         <Link to="/add">
                             <div>
-                                <span class="icon"><i class="bi bi-file-earmark"></i></span>
+                                <span class="icon"><i class="bi bi-file-earmark-plus-fill"></i></span>
                                 <span class="txt-link">Adição de arquivo</span>
                             </div>
                         </Link>
@@ -41,7 +49,7 @@ class Lixeira extends Component {
                     <li class="iten_menu">
                         <Link to="/search">
                             <div>
-                                <span class="icon"><i class="bi bi-file-earmark"></i></span>
+                                <span class="icon"><i class="bi bi-search"></i></span>
                                 <span class="txt-link">Pesquisa e edição</span>
                             </div>
                         </Link>
@@ -49,7 +57,7 @@ class Lixeira extends Component {
                     <li class="iten_menu">
                         <Link to="/lixeira">
                             <div>
-                                <span class="icon"><i class="bi bi-file-earmark"></i></span>
+                                <span class="icon"><i class="bi bi-trash"></i></span>
                                 <span class="txt-link">Lixeira</span>
                             </div>
                         </Link>
@@ -57,11 +65,12 @@ class Lixeira extends Component {
                     <li class="iten_menu">
                         <Link to="/">
                             <div>
-                                    <span class="icon"><i class="bi bi-file-earmark"></i></span>
+                                    <span class="icon"><i class="bi bi-box-arrow-in-left"></i></span>
                                     <span class="txt-link">Sair</span>
                             </div>
                         </Link>
                     </li>
+                    
             </ul>
         </nav>
         
@@ -73,6 +82,7 @@ class Lixeira extends Component {
                     <th>Nome do Arquivo</th>
                     <th>Usuário</th>
                     <th>Data de Eliminação</th>
+                    <th>Restaurar</th>
                 </tr>
             </thead>
             <tbody>
@@ -80,16 +90,25 @@ class Lixeira extends Component {
                     <td>Documento.txt</td>
                     <td>João Silva</td>
                     <td>2024-05-07</td>
+                    <td>
+                        <button className="restaurar">Restaurar</button>
+                    </td>
                 </tr>
                 <tr>
                     <td>Foto.jpg</td>
                     <td>Maria Oliveira</td>
                     <td>2024-05-06</td>
+                    <td>
+                        <button className="restaurar">Restaurar</button>
+                    </td>
                 </tr>
                 <tr>
                     <td>Planilha.xlsx</td>
                     <td>Pedro Souza</td>
                     <td>2024-05-05</td>
+                    <td>
+                        <button className="restaurar">Restaurar</button>
+                    </td>
                 </tr>
             </tbody>
         </table>

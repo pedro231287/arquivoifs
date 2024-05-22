@@ -24,9 +24,17 @@ class AddDocument extends Component {
             </div>
             <ul>
                     <li class="iten_menu">
+                        <Link to="/perfil">
+                            <div>
+                                    <span class="icon"><i class="bi bi-person-circle"></i></span>
+                                    <span class="txt-link">Perfil</span>
+                            </div>
+                        </Link>
+                    </li>
+                    <li class="iten_menu">
                         <Link to="/createProfile">
                             <div>
-                                <span class="icon"><i class="bi bi-house"></i></span>
+                                <span class="icon"><i class="bi bi-person-plus-fill"></i></span>
                                 <span class="txt-link">Cadastro de usuário</span>
                             </div>
                         </Link>
@@ -34,7 +42,7 @@ class AddDocument extends Component {
                     <li class="iten_menu">
                         <Link to="/add">
                             <div>
-                                <span class="icon"><i class="bi bi-file-earmark"></i></span>
+                                <span class="icon"><i class="bi bi-file-earmark-plus-fill"></i></span>
                                 <span class="txt-link">Adição de arquivo</span>
                             </div>
                         </Link>
@@ -42,7 +50,7 @@ class AddDocument extends Component {
                     <li class="iten_menu">
                         <Link to="/search">
                             <div>
-                                <span class="icon"><i class="bi bi-file-earmark"></i></span>
+                                <span class="icon"><i class="bi bi-search"></i></span>
                                 <span class="txt-link">Pesquisa e edição</span>
                             </div>
                         </Link>
@@ -50,7 +58,7 @@ class AddDocument extends Component {
                     <li class="iten_menu">
                         <Link to="/lixeira">
                             <div>
-                                <span class="icon"><i class="bi bi-file-earmark"></i></span>
+                                <span class="icon"><i class="bi bi-trash"></i></span>
                                 <span class="txt-link">Lixeira</span>
                             </div>
                         </Link>
@@ -58,11 +66,12 @@ class AddDocument extends Component {
                     <li class="iten_menu">
                         <Link to="/">
                             <div>
-                                    <span class="icon"><i class="bi bi-file-earmark"></i></span>
+                                    <span class="icon"><i class="bi bi-box-arrow-in-left"></i></span>
                                     <span class="txt-link">Sair</span>
                             </div>
                         </Link>
                     </li>
+                    
             </ul>
         </nav>
         

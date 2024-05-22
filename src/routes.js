@@ -4,6 +4,7 @@ import AddDocument from "./pages/AddDocument";
 import SearhDocument from "./pages/SearchDocument";
 import ProfileCreator from "./pages/ProfileCreator";
 import Lixeira from "./pages/Lixeira";
+import Perfil from "./pages/Perfil";
 
 function RouteApp () {
 
@@ -15,6 +16,7 @@ function RouteApp () {
                 <Route path="/search" element={<SearhDocument/>} />
                 <Route path="/createProfile" element={<ProfileCreator/>} />
                 <Route path="/lixeira" element={<Lixeira/>} />
+                <Route path="/perfil" element={<Perfil/>} />
             </Routes>
         </BrowserRouter>
     )

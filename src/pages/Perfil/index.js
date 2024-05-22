@@ -1,27 +1,27 @@
 
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import './SearchDocument.css';
+import './Perfil.css';
 
 
-class SearhDocument extends Component {
+class Perfil extends Component {
 
  
 
   render() {
 
     return (
-<html> 
+<html>
     <head>
-        <title>PESQUISAR DOCUMENTO</title>
+        <title>CRIAR PERFIL</title>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"></link>
-    </head> 
+    </head>
     <body>
-    
+        
         <nav class="menu_lateral">
-            <div class="btn_expandir">
-                <i class="bi bi-list"></i>
-            </div>
+        <div class="btn_expandir">
+            <i class="bi bi-list"></i>
+        </div>
             <ul>
                     <li class="iten_menu">
                         <Link to="/perfil">
@@ -75,51 +75,35 @@ class SearhDocument extends Component {
             </ul>
         </nav>
         
-        <div class="campoSearch">
-            <h1>PESQUISA E EDIÇÃO</h1>
-            <br/>
-            <label>Tipo de Arquivo:</label>
-            <select>
-                <option value="vazio">-</option>
-                <option value="Corrente">Corrente</option>
-                <option value="Intermediario">Intermediário</option>
-                <option value="Permanente">Permanente</option>
-            </select>
-            
-            <label>Nome completo</label>
-            <input type="text" placeholder="email"/>
-            
-            <label>Setor/campus</label>
-            <input type="text" placeholder="senha"/>
-            
-            <label>E-mail</label>
-            <input type="text" placeholder="nome"/>
-            
-            <label>Telefone</label>
-            <input type="text" placeholder="Telefone"/>                
-            
-            <label>portaria nº</label>
-            <input type="text" placeholder="Portaria"/>
-            
-            <label>Ano</label>
-            <input type="text" placeholder="Ano"/>
-                
-            <label>projeto pedagógico</label>
-            <input type="text" placeholder="Projeto Pedagógico"/>
-            
-            <label>Curso</label>
-            <input type="text" placeholder="Curso"/>        
+        <div class="campoPerfil">
+            <h1>Perfil de Usuário</h1>
+            <div class="perfil">
+                <h2>Dados Pessais</h2>
+                <div className="dados">
+                <p>Nome: <span id="nome">João Costa Silva</span></p>
+                <p>Email: <span id="email">jcs@gmail.com</span></p>
+                </div>
+                <hr/>
+                <h2>Trocar Senha</h2>
+                <label>Senha atual</label>
+                <input type="password" id="password" placeholder="Senha atual"></input>
 
-            <button>Pesquisar</button>
+                <label>Nova senha</label>
+                <input type="password" id="password" placeholder="Nova senha"></input>
+
+                <label>Confirmar nova senha</label>
+                <input type="password" id="password" placeholder="Confirmar nova senha"></input>
+
+                <button id="trocar" type="submit">Trocar</button>
+            </div>
         </div>
         
     </body>
 </html>
-
     );
 
   }
 
 }
 
-export default SearhDocument;
+export default Perfil;
