@@ -50,12 +50,13 @@ class Login extends Component {
               </div>
               <div id="formulario">
                   <form onSubmit={this.enviar}>
-                      <input className="loginInput" placeholder="insira seu CPF" type="cpf" value={this.state.cpf} onChange={this.changeInput} required/><br/>
-                      <input className="loginInput" placeholder="Digite sua senha" type="password" value={this.state.senha} onChange={this.changeInput} required/><br/>
-                        <Link to="/search">
-                          <button id="loginButton" type="submit">Entrar</button>
-                        </Link>
+                      <input id="cpf" className="loginInput" placeholder="insira seu CPF" type="cpf" value={this.state.cpf} onChange={this.changeInput} required/><br/>
+                      <input id="senha" className="loginInput" placeholder="Digite sua senha" type="password" value={this.state.senha} onChange={this.changeInput} required/><br/>
+                      <Link to="/search">
+                        <button id="loginButton" type="submit">Entrar</button>
+                      </Link>
                   </form>
+                      
               </div>
           </div>
       </div>

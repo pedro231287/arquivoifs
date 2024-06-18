@@ -6,6 +6,75 @@ import './AddDocument.css';
 
 class AddDocument extends Component {
 
+    constructor(props) {
+        super(props);
+          this.state = { 
+            fundo: '',
+            unidade: '',
+            especie: '',
+            interessado: '',
+            assuntoDetalhado: '',
+            codigoClassificacao: '',
+            caixa: '',
+            prazoGuarda: '',
+            destinacaoFinal: '',
+            dataDestinacao: '',
+            ordemDocumento: '',
+            numeroDocumento: '',
+            cpfCnpj: '',
+            matriculaSiape: '',
+            dataNascimento: '',
+            anoIngressoDataAdmissao: '',
+            nomeMae: '',
+            curso: '',
+            disciplinaProfessor: '',
+            dataProducao: '',
+            prestacaoContas: '',
+            dataTransferencia: '',
+            observacao: '',
+              }
+      }
+    
+      changeInput = (event) => {
+        this.setState({
+          [event.target.id]: event.target.value
+          });
+      }
+    
+      adcionar = (event) => {
+          event.preventDefault(); 
+    
+          let document = {
+            fundo: this.state.fundo,
+            unidade: this.state.unidade,
+            especie: this.state.especie,
+            interessado: this.state.interessado,
+            assuntoDetalhado: this.state.assuntoDetalhado,
+            codigoClassificacao: this.state.codigoClassificacao,
+            caixa: this.state.caixa,
+            prazoGuarda: this.state.prazoGuarda,
+            destinacaoFinal: this.state.destinacaoFinal,
+            dataDestinacao: this.state.dataDestinacao,
+            ordemDocumento: this.state.ordemDocumento,
+            numeroDocumento: this.state.numeroDocumento,
+            cpfCnpj: this.state.cpfCnpj,
+            matriculaSiape: this.state.matriculaSiape,
+            dataNascimento: this.state.dataNascimento,
+            anoIngressoDataAdmissao: this.state.anoIngressoDataAdmissao,
+            nomeMae: this.state.nomeMae,
+            curso: this.state.curso,
+            disciplinaProfessor: this.state.disciplinaProfessor,
+            dataProducao: this.state.dataProducao,
+            prestacaoContas: this.state.prestacaoContas,
+            dataTransferencia: this.state.dataTransferencia,
+            observacao: this.state.observacao,
+          };
+    
+          const documentArray = JSON.stringify(document, null, 2)
+          alert(documentArray)
+      }
+      
+
  
   render() {
 
@@ -79,78 +148,79 @@ class AddDocument extends Component {
             
             <h1>ADIÇÃO DE NOVO DOCUMENTO</h1>
             <br/>
+            <form onSubmit={this.adcionar}>
                 <label>FUNDO</label>
-                <input type="text" placeholder="Fundo"/>
+                <input id="fundo" type="text" placeholder="Fundo" value={this.state.fundo} onChange={this.changeInput}/>
             
                 <label>UNIDADE</label>
-                <input type="text" placeholder="Unidade"/>
+                <input id="unidade" type="text" placeholder="Unidade" value={this.state.unidade} onChange={this.changeInput}/>
             
                 <label>ESPÉCIE</label>
-                <input type="text" placeholder="Unidade"/>
+                <input id="especie" type="text" placeholder="Espécie" value={this.state.especie} onChange={this.changeInput}/>
         
                 <label>INTERESSADO</label>
-                <input type="text" placeholder="INTERESSADO"/>
+                <input id="interessado" type="text" placeholder="INTERESSADO" value={this.state.interessado} onChange={this.changeInput}/>
             
                 <label>ASSUNTO DETALHADO</label>
-                <input type="text" placeholder="INTERESSADO"/>
+                <input id="assuntoDetalhado" type="text" placeholder="Assunto Detalhado" value={this.state.assuntoDetalhado} onChange={this.changeInput}/>
             
                 <label>CÓDIGO DE CLASSIFICAÇÃO</label>
-                <input type="text" placeholder="INTERESSADO"/>
+                <input id="codigoClassificacao" type="text" placeholder="Código de Classificação" value={this.state.codigoClassificacao} onChange={this.changeInput}/>
             
                 <label>CAIXA</label>    
-                <input type="text" placeholder="CAIXA"/>
+                <input id="caixa" type="text" placeholder="CAIXA" value={this.state.caixa} onChange={this.changeInput}/>
         
                 <label>PRAZO DE GUARDA</label>
-                <input type="text" placeholder="PRAZO DE GUARDA"/>
+                <input id="prazoGuarda" type="text" placeholder="PRAZO DE GUARDA" value={this.state.prazoGuarda} onChange={this.changeInput}/>
             
                 <label>DESTINAÇÃO FINAL</label>
-                <input type="text" placeholder="DESTINAÇÃO FINAL"/>
+                <input id="destinacaoFinal" type="text" placeholder="DESTINAÇÃO FINAL" value={this.state.destinacaoFinal} onChange={this.changeInput}/>
             
                 <label>DATA DA DESTINAÇÃO</label>
-                <input type="text" placeholder="DATA DA DESTINAÇÃO"></input>
+                <input id="dataDestinacao" type="text" placeholder="DATA DA DESTINAÇÃO" value={this.state.dataDestinacao} onChange={this.changeInput}></input>
         
                 <label>ORDEM DO DOCUMENTO</label>
-                <input type="text" placeholder="ORDEM DO DOCUMENTO"></input>
+                <input id="ordemDocumento" type="text" placeholder="ORDEM DO DOCUMENTO" value={this.state.ordemDocumento} onChange={this.changeInput}></input>
             
                 <label>NÚMERO DO DOCUMENTO</label>
-                <input type="text" placeholder="NÚMERO DO DOCUMENTO"></input>
+                <input id="numeroDocumento" type="text" placeholder="NÚMERO DO DOCUMENTO" value={this.state.numeroDocumento} onChange={this.changeInput}></input>
             
                 <label>CPF/CNPJ</label>
-                <input type="text" placeholder="CPF/CNPJ"></input>
+                <input id="cpfCnpj" type="text" placeholder="CPF/CNPJ" value={this.state.cpfCnpj} onChange={this.changeInput}></input>
             
                 <label>MATRICULA/SIAPE</label>
-                <input type="text" placeholder="MATRICULA/SIAPE"></input>
+                <input id="matriculaSiape" type="text" placeholder="MATRICULA/SIAPE" value={this.state.matriculaSiape} onChange={this.changeInput}></input>
         
                 <label>DATA DE NASCIMENTO</label>
-                <input type="text" placeholder="DATA DE NASCIMENTO"></input>
+                <input id="dataNascimento" type="text" placeholder="DATA DE NASCIMENTO" value={this.state.dataNascimento} onChange={this.changeInput}></input>
             
                 <label>ANO DE INGRESSO/DATA DE ADMISSÃO</label>
-                <input type="text" placeholder="ANO DE INGRESSO/DATA DE ADMISSÃO"></input>
+                <input id="anoIngressoDataAdmissao" type="text" placeholder="ANO DE INGRESSO/DATA DE ADMISSÃO" value={this.state.anoIngressoDataAdmissao} onChange={this.changeInput}></input>
             
                 <label>NOME DA MÃE</label>
-                <input type="text" placeholder="NOME DA MÃE"></input>
+                <input id="nomeMae" type="text" placeholder="NOME DA MÃE" value={this.state.nomeMae} onChange={this.changeInput}></input>
             
                 <label>CURSO</label>
-                <input type="text" placeholder="CURSO"></input>
+                <input id="curso" type="text" placeholder="CURSO" value={this.state.curso} onChange={this.changeInput}></input>
             
                 <label>DISCIPLINA/PROFESSOR</label>
-                <input type="text" placeholder="DISCIPLINA/PROFESSOR"></input>
+                <input id="disciplinaProfessor" type="text" placeholder="DISCIPLINA/PROFESSOR" value={this.state.disciplinaProfessor} onChange={this.changeInput}></input>
             
                 <label>DATA DE PRODUÇÃO</label>
-                <input type="text" placeholder="DATA DE PRODUÇÃO"></input>
+                <input id="dataProducao" type="text" placeholder="DATA DE PRODUÇÃO" value={this.state.dataProducao} onChange={this.changeInput}></input>
         
                 <label>PRESTAÇÃO DE CONTAS</label>
-                <input type="text" placeholder="PRESTAÇÃO DE CONTAS"></input>
+                <input id="prestacaoContas" type="text" placeholder="PRESTAÇÃO DE CONTAS" value={this.state.prestacaoContas} onChange={this.changeInput}></input>
             
                 <label>DATA DE TRANSFERÊNCIA</label>
-                <input type="text" placeholder="DATA DE TRANSFERÊNCIA"></input>
+                <input id="dataTransferencia" type="text" placeholder="DATA DE TRANSFERÊNCIA" value={this.state.dataTransferencia} onChange={this.changeInput}></input>
             
                 <label>OBSERVAÇÃO</label>
-                <input type="text" placeholder="OBSERVAÇÃO"></input>
+                <input id="observacao" type="text" placeholder="OBSERVAÇÃO" value={this.state.observacao} onChange={this.changeInput}></input>
             
         
-            <button>Criar</button>
-            
+                <button type="submit">Adcionar</button>
+            </form>
         </div>
         
     </body>
