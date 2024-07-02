@@ -2,6 +2,8 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import './AddDocument.css';
+import { doc, setDoc, addDoc, collection } from "firebase/firestore";
+import { db } from "../../firebaseConnection";
 
 
 class AddDocument extends Component {
@@ -41,7 +43,7 @@ class AddDocument extends Component {
           });
       }
     
-      adcionar = (event) => {
+      adcionar = async (event) => {
           event.preventDefault(); 
     
           let document = {
@@ -70,8 +72,66 @@ class AddDocument extends Component {
             observacao: this.state.observacao,
           };
     
-          const documentArray = JSON.stringify(document, null, 2)
-          alert(documentArray)
+//         const documentArray = JSON.stringify(document, null, 2)
+//        alert(documentArray)
+
+          await addDoc(collection(db, "arquivo"), {
+            Fundo: document.fundo,
+            Unidade: document.unidade,
+            Especie: document.especie,
+            Interessado: document.interessado,
+            AssuntoDetalhado: document.assuntoDetalhado,
+            CodigoClassificacao: document.codigoClassificacao,
+            Caixa: document.caixa,
+            PrazoGuarda: document.prazoGuarda,
+            DestinacaoFinal: document.destinacaoFinal,
+            DataDestinacao: document.dataDestinacao,
+            OrdemDocumento: document.ordemDocumento,
+            NumeroDocumento: document.numeroDocumento,
+            CpfCnpj: document.cpfCnpj,
+            MatriculaSiape: document.matriculaSiape,
+            DataNascimento: document.dataNascimento,
+            AnoIngressoDataAdmissao: document.anoIngressoDataAdmissao,
+            NomeMae: document.nomeMae,
+            Curso: document.curso,
+            DisciplinaProfessor: document.disciplinaProfessor,
+            DataProducao: document.dataProducao,
+            PrestacaoContas: document.prestacaoContas,
+            DataTransferencia: document.dataTransferencia,
+            Observacao: document.observacao,
+          })
+          .then(() => {
+            alert("Documento adicionado com sucesso!");
+            this.setState({
+              fundo: '',
+              unidade: '',
+              especie: '',
+              interessado: '',
+              assuntoDetalhado: '',
+              codigoClassificacao: '',
+              caixa: '',
+              prazoGuarda: '',
+              destinacaoFinal: '',
+              dataDestinacao: '',
+              ordemDocumento: '',
+              numeroDocumento: '',
+              cpfCnpj: '',
+              matriculaSiape: '',
+              dataNascimento: '',
+              anoIngressoDataAdmissao: '',
+              nomeMae: '',
+              curso: '',
+              disciplinaProfessor: '',
+              dataProducao: '',
+              prestacaoContas: '',
+              dataTransferencia: '',
+              observacao: '',
+            });
+          })
+          .catch((error) => {
+            alert("Algo deu errado tente novamente!")
+          })
+
       }
       
 
