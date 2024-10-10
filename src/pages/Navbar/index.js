@@ -1,8 +1,25 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import './Navbar.css'; // Caso queira estilizar o menu separadamente
+import { Link, useNavigate } from "react-router-dom";
+import './Navbar.css';
+import { getAuth, signOut } from "firebase/auth";
 
 const Navbar = () => {
+
+  const navigate = useNavigate();
+  const auth = getAuth();
+
+  const handleLogout = () => {
+    signOut(auth)
+      .then(() => {
+        // Redireciona para a página de login após o logout
+        navigate("/");
+      })
+      .catch((error) => {
+        console.error("Erro ao fazer logout: ", error);
+      });
+  };
+
+
   return (
     <nav className="menu_lateral">
       <div className="btn_expandir">
@@ -50,12 +67,10 @@ const Navbar = () => {
           </Link>
         </li>
         <li className="iten_menu">
-          <Link to="/">
-            <div>
-              <span className="icon"><i className="bi bi-box-arrow-in-left"></i></span>
-              <span className="txt-link">Sair</span>
-            </div>
-          </Link>
+          <div onClick={handleLogout} className="logout-link">
+            <span className="icon"><i className="bi bi-box-arrow-in-left"></i></span>
+            <span className="txt-link">Sair</span>
+          </div>
         </li>
       </ul>
     </nav>
