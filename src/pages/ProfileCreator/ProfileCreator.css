@@ -7,51 +7,7 @@
 body{
     height: 100vh;
 }
-nav.menu_lateral{
-    width: 300px;
-    height: 100%;
-    background-color: #202020;
-    padding: 20px 0px 20px 0px;
-    box-shadow: 3px 0 0 rgb(65, 78, 131);
-    position: fixed;
-    top: 0;
-    left: 0;
-}
-.btn_expandir{
-    width: 100%;
-    padding-left: 10px;
-}
-.btn_expandir > i{
-    color: #fff;
-    font-size: 24px;
-    cursor: pointer;
-}
-ul{
-    width: 100%;
-    list-style-type: none;
-}
-ul li.iten_menu{
-    transition: .2s;
-}
-ul li.iten_menu:hover{
-    background-color: rgb(65, 78, 131);
-}
-ul li.iten_menu a{
-    color: #fff;
-    text-decoration: none;
-    font-size: 20px;
-    display: flex;
-}
-.iten_menu{
-    padding: 10px 4%;
-}
-ul li.iten_menu a .txt-link{
-    margin-left: 20px;
-}
-ul li.iten_menu a .icon > i{
-    font-size: 30px;
-    line-height: 40px;
-}
+
 .campoCreate{
     display: flex;
     flex-direction: column;
