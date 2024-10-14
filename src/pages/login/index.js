@@ -1,11 +1,11 @@
 
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom"; // useNavigate para redirecionamento
+import { useNavigate } from "react-router-dom"; // useNavigate para redirecionamento
 import { signInWithEmailAndPassword } from "firebase/auth"; // Importando a função de login do Firebase
 import { auth } from "../../firebaseConnection"; // Importando corretamente
 import './Login.css';
 
-const Login = () => {
+const Login = ({ setIsLoggedIn }) => {
   const [email, setEmail] = useState(""); // Mudando CPF para email
   const [senha, setSenha] = useState("");
   const navigate = useNavigate(); // Para redirecionar após o login
@@ -33,6 +33,7 @@ const Login = () => {
         // Sucesso na autenticação
         const user = userCredential.user;
         console.log("Usuário autenticado:", user);
+        setIsLoggedIn(true); // Atualiza o estado para indicar que o usuário está logado
         navigate("/search"); // Redireciona para a página após login
       })
       .catch((error) => {

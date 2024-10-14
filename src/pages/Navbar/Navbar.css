@@ -26,7 +26,7 @@ ul {
 }
 
 ul li.iten_menu {
-    padding: 10px 4%;
+    padding: 20px 4%;
     transition: 0.2s;
 }
 
@@ -35,20 +35,23 @@ ul li.iten_menu:hover {
 }
 
 ul li.iten_menu a, 
-ul li.iten_menu .logout-link {
-    color: #fff;
+ul li.iten_menu .logout-link, 
+ul li.iten_menu .navbar-links {
+    color: #fff !important; /* Força a cor branca nos textos e ícones */
     text-decoration: none;
-    font-size: 20px;
+    font-size: 24px;
     display: flex;
-    align-items: center; /* Centraliza ícones e textos */
+    align-items: center;
+    width: 100%;
+    cursor: pointer;
 }
 
-ul li.iten_menu a .txt-link, 
-ul li.iten_menu .logout-link .txt-link {
-    margin-left: 30px;
-}
-
-ul li.iten_menu a .icon > i, 
+ul li.iten_menu .icon > i, 
 ul li.iten_menu .logout-link .icon > i {
-    font-size: 30px;
+    font-size: 30px; /* Aumenta o tamanho dos ícones */
+    color: #fff !important; /* Força a cor branca nos ícones */
+}
+
+ul li.iten_menu .txt-link {
+    margin-left: 20px;
 }
