@@ -1,14 +1,20 @@
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom"; // useNavigate para redirecionamento
 import { signInWithEmailAndPassword } from "firebase/auth"; // Importando a função de login do Firebase
 import { auth } from "../../firebaseConnection"; // Importando corretamente
 import './Login.css';
 
-const Login = ({ setIsLoggedIn }) => {
+const Login = ({ isLoggedIn, setIsLoggedIn }) => {
   const [email, setEmail] = useState(""); // Mudando CPF para email
   const [senha, setSenha] = useState("");
   const navigate = useNavigate(); // Para redirecionar após o login
+
+  useEffect(() => {
+    if (isLoggedIn) {
+      navigate("/search");
+    }
+  }, [isLoggedIn, navigate]);
 
   const changeInput = (event) => {
     const { id, value } = event.target;
