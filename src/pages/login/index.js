@@ -1,20 +1,21 @@
-
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom"; // useNavigate para redirecionamento
-import { signInWithEmailAndPassword } from "firebase/auth"; // Importando a função de login do Firebase
-import { auth } from "../../firebaseConnection"; // Importando corretamente
+import { useNavigate } from "react-router-dom";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../../firebaseConnection";
+import { getFirestore, collection, getDocs, query, where } from "firebase/firestore"; // Importando Firestore
 import './Login.css';
 
-const Login = ({ isLoggedIn, setIsLoggedIn }) => {
-  const [email, setEmail] = useState(""); // Mudando CPF para email
+const Login = ({ setIsLoggedIn, setIsMaster }) => { // Adicionando setIsMaster como props
+  const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
-  const navigate = useNavigate(); // Para redirecionar após o login
+  const navigate = useNavigate();
+  const db = getFirestore(); // Instância do Firestore
 
   useEffect(() => {
-    if (isLoggedIn) {
+    if (setIsLoggedIn) {
       navigate("/search");
     }
-  }, [isLoggedIn, navigate]);
+  }, [setIsLoggedIn, navigate]);
 
   const changeInput = (event) => {
     const { id, value } = event.target;
@@ -25,7 +26,7 @@ const Login = ({ isLoggedIn, setIsLoggedIn }) => {
     }
   };
 
-  const enviar = (event) => {
+  const enviar = async (event) => {
     event.preventDefault();
 
     if (!email || !senha) {
@@ -33,21 +34,28 @@ const Login = ({ isLoggedIn, setIsLoggedIn }) => {
       return;
     }
 
-    // Autenticação com Firebase
-    signInWithEmailAndPassword(auth, email, senha)
-      .then((userCredential) => {
-        // Sucesso na autenticação
-        const user = userCredential.user;
-        console.log("Usuário autenticado:", user);
-        setIsLoggedIn(true); // Atualiza o estado para indicar que o usuário está logado
-        navigate("/search"); // Redireciona para a página após login
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        console.error("Erro na autenticação:", errorCode, errorMessage);
-        alert("Erro ao fazer login: " + errorMessage);
-      });
+    try {
+      // Autenticação com Firebase
+      const userCredential = await signInWithEmailAndPassword(auth, email, senha);
+      const user = userCredential.user;
+      console.log("Usuário autenticado:", user);
+
+      // Verificar se o usuário é master
+      const masterQuery = query(collection(db, "master"), where("email", "==", email));
+      const querySnapshot = await getDocs(masterQuery);
+
+      if (!querySnapshot.empty) {
+        setIsMaster(true); // Define como master se encontrado
+      } else {
+        setIsMaster(false); // Define como não master se não encontrado
+      }
+
+      setIsLoggedIn(true);
+      navigate("/search");
+    } catch (error) {
+      console.error("Erro na autenticação:", error);
+      alert("Erro ao fazer login: " + error.message);
+    }
   };
 
   return (
