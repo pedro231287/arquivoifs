@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useContext } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import Login from "./pages/login";
@@ -8,10 +8,11 @@ import ProfileCreator from "./pages/ProfileCreator";
 import Lixeira from "./pages/Lixeira";
 import Perfil from "./pages/Perfil";
 import Navbar from "./pages/Navbar";
+import Navbar2 from './pages/Navbar 2';
+import { AuthContext } from "./contexts/AuthContext"; // Importa o contexto
 
 function RouteApp() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [isMaster, setIsMaster] = useState(false); // Estado para controlar se é master
+  const { isLoggedIn, setIsLoggedIn, isMaster, setIsMaster } = useContext(AuthContext); // Usa os estados globais
   const auth = getAuth();
 
   useEffect(() => {
@@ -25,20 +26,21 @@ function RouteApp() {
     });
 
     return () => unsubscribe();
-  }, [auth]);
+  }, [auth, setIsLoggedIn, setIsMaster]);
 
   return (
     <BrowserRouter>
-      {isLoggedIn && <Navbar setIsLoggedIn={setIsLoggedIn} />} 
-      <Routes>
-        <Route path="/" element={<Login setIsLoggedIn={setIsLoggedIn} setIsMaster={setIsMaster} />} />
-        <Route path="/add" element={isLoggedIn ? <AddDocument /> : <Login setIsLoggedIn={setIsLoggedIn} setIsMaster={setIsMaster} />} />
-        <Route path="/search" element={isLoggedIn ? <SearchDocument /> : <Login setIsLoggedIn={setIsLoggedIn} setIsMaster={setIsMaster} />} />
-        <Route path="/createProfile" element={isMaster ? <ProfileCreator /> : <Login setIsLoggedIn={setIsLoggedIn} setIsMaster={setIsMaster} />} />
-        <Route path="/lixeira" element={isLoggedIn ? <Lixeira /> : <Login setIsLoggedIn={setIsLoggedIn} setIsMaster={setIsMaster} />} />
-        <Route path="/perfil" element={isLoggedIn ? <Perfil /> : <Login setIsLoggedIn={setIsLoggedIn} setIsMaster={setIsMaster} />} />
-      </Routes>
-    </BrowserRouter>
+  {isLoggedIn && (isMaster ? <Navbar /> : <Navbar2 />)} {/* Renderiza Navbar ou Navbar2 com base no estado de isMaster */}
+  <Routes>
+    <Route path="/" element={<Login />} />
+    <Route path="/add" element={isLoggedIn ? <AddDocument /> : <Login />} />
+    <Route path="/search" element={isLoggedIn ? <SearchDocument /> : <Login />} />
+    <Route path="/createProfile" element={isLoggedIn ? (isMaster ? <ProfileCreator /> : <SearchDocument />) : <Login />} />
+    <Route path="/lixeira" element={isLoggedIn ? <Lixeira /> : <Login />} />
+    <Route path="/perfil" element={isLoggedIn ? <Perfil /> : <Login />} />
+  </Routes>
+</BrowserRouter>
+
   );
 }
 

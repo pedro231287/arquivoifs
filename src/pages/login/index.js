@@ -1,21 +1,17 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../firebaseConnection";
-import { getFirestore, collection, getDocs, query, where } from "firebase/firestore"; // Importando Firestore
+import { getFirestore, collection, getDocs, query, where } from "firebase/firestore";
+import { AuthContext } from "../../contexts/AuthContext"; // Importando o contexto de autenticação
 import './Login.css';
 
-const Login = ({ setIsLoggedIn, setIsMaster }) => { // Adicionando setIsMaster como props
+const Login = () => {
+  const { setIsLoggedIn, setIsMaster } = useContext(AuthContext); // Obtendo as funções do contexto
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
   const navigate = useNavigate();
   const db = getFirestore(); // Instância do Firestore
-
-  useEffect(() => {
-    if (setIsLoggedIn) {
-      navigate("/search");
-    }
-  }, [setIsLoggedIn, navigate]);
 
   const changeInput = (event) => {
     const { id, value } = event.target;
@@ -38,22 +34,17 @@ const Login = ({ setIsLoggedIn, setIsMaster }) => { // Adicionando setIsMaster c
       // Autenticação com Firebase
       const userCredential = await signInWithEmailAndPassword(auth, email, senha);
       const user = userCredential.user;
-      console.log("Usuário autenticado:", user);
 
       // Verificar se o usuário é master
       const masterQuery = query(collection(db, "master"), where("email", "==", email));
       const querySnapshot = await getDocs(masterQuery);
 
-      if (!querySnapshot.empty) {
-        setIsMaster(true); // Define como master se encontrado
-      } else {
-        setIsMaster(false); // Define como não master se não encontrado
-      }
-
-      setIsLoggedIn(true);
-      navigate("/search");
+      setIsMaster(!querySnapshot.empty); // Define como master se encontrado
+      setIsLoggedIn(true); // Usuário logado com sucesso
+      navigate("/search"); // Navega para a página de pesquisa
     } catch (error) {
       console.error("Erro na autenticação:", error);
+      
       alert("Erro ao fazer login: " + error.message);
     }
   };

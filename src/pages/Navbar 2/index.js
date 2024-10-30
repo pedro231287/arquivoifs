@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import './Navbar.css';
+import '../Navbar/Navbar.css';
 import { getAuth, signOut } from "firebase/auth";
 import { AuthContext } from "../../contexts/AuthContext";
 
@@ -37,12 +37,7 @@ const Navbar = () => {
             <span className="txt-link">Perfil</span>
           </div>
         </li>
-        <li className="iten_menu" onClick={() => handleNavigate('/createProfile')}>
-          <div className="navbar-links">
-            <span className="icon"><i className="bi bi-person-plus-fill"></i></span>
-            <span className="txt-link">Cadastro de usuário</span>
-          </div>
-        </li>
+        
         <li className="iten_menu" onClick={() => handleNavigate('/add')}>
           <div className="navbar-links">
             <span className="icon"><i className="bi bi-file-earmark-plus-fill"></i></span>
