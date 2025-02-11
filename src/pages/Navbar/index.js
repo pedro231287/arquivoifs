@@ -43,6 +43,18 @@ const Navbar = () => {
             <span className="txt-link">Cadastro de usuário</span>
           </div>
         </li>
+        <li className="iten_menu" onClick={() => handleNavigate('/cadastroCodigos')}>
+          <div className="navbar-links">
+            <span className="icon"><i className="bi bi-file-earmark-plus-fill"></i></span>
+            <span className="txt-link">Cadastro do código</span>
+          </div>
+        </li>
+        <li className="iten_menu" onClick={() => handleNavigate('/addmetadados')}>
+          <div className="navbar-links">
+            <span className="icon"><i className="bi bi-file-earmark-plus-fill"></i></span>
+            <span className="txt-link">Adição de Metadados</span>
+          </div>
+        </li>
         <li className="iten_menu" onClick={() => handleNavigate('/add')}>
           <div className="navbar-links">
             <span className="icon"><i className="bi bi-file-earmark-plus-fill"></i></span>

@@ -3,6 +3,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import Login from "./pages/login";
 import AddDocument from "./pages/AddDocument";
+import AddMetaDados from "./pages/AddMetaDados";
+import CadastroCodigo from "./pages/CadastroCodigos";
 import SearchDocument from "./pages/SearchDocument";
 import ProfileCreator from "./pages/ProfileCreator";
 import Lixeira from "./pages/Lixeira";
@@ -36,6 +38,8 @@ function RouteApp() {
     <Route path="/add" element={isLoggedIn ? <AddDocument /> : <Login />} />
     <Route path="/search" element={isLoggedIn ? <SearchDocument /> : <Login />} />
     <Route path="/createProfile" element={isLoggedIn ? (isMaster ? <ProfileCreator /> : <SearchDocument />) : <Login />} />
+    <Route path="/addmetadados" element={isLoggedIn ? (isMaster ? <AddMetaDados /> : <SearchDocument />) : <Login />} />
+    <Route path="/cadastroCodigos" element={isLoggedIn ? (isMaster ? <CadastroCodigo /> : <SearchDocument />) : <Login />} />
     <Route path="/lixeira" element={isLoggedIn ? <Lixeira /> : <Login />} />
     <Route path="/perfil" element={isLoggedIn ? <Perfil /> : <Login />} />
   </Routes>

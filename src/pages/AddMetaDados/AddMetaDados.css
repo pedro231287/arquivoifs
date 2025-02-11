@@ -1,0 +1,54 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'sans serif', Times New Roman, Times, serif;
+}
+body{
+    height: 100vh;
+}
+
+.campoAdd{
+    display: flex;
+    flex-direction: column;
+    height: 1700px;
+    background-color: #fff;
+    padding: 20px;
+    margin-left: 300px;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    
+}
+label{
+    margin-bottom: 10px;
+}
+input {
+    padding: 5px;
+    margin-bottom: 10px;
+    width: 500px;
+}
+button {
+    padding: 10px 20px;
+    border-radius: 5px;
+    background-color: rgb(65, 78, 131);
+    color: white;
+    cursor: pointer;
+    margin-top: 10px;
+}
+.checkbox-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    align-items: center;
+  }
+  .checkbox-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .campoCadastro{
+    display: flex;
+    flex-direction: column; 
+    align-items: flex-start;
+  }
