@@ -3,15 +3,12 @@ import React from "react";
 import './SearchDocument.css';
 import Navbar from '../Navbar';
 
+
 const SearhDocument = () => {
   return (
     <html> 
       <head>
         <title>PESQUISAR DOCUMENTO</title>
-        <link
-          rel="stylesheet"
-          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
-        ></link>
       </head> 
       <body>
         

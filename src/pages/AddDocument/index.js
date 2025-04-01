@@ -5,6 +5,7 @@ import { addDoc, collection } from "firebase/firestore";
 import { db } from "../../firebaseConnection";
 import Navbar from '../Navbar';
 
+
 const AddDocument = () => {
   const [document, setDocument] = useState({
     fundo: '',
@@ -104,7 +105,6 @@ const AddDocument = () => {
     <html>
       <head>
         <title>ADCIONAR DOCUMENTO</title>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"></link>
       </head>
       <body>
 

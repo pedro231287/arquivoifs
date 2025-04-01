@@ -10,7 +10,7 @@ import ProfileCreator from "./pages/ProfileCreator";
 import Lixeira from "./pages/Lixeira";
 import Perfil from "./pages/Perfil";
 import Navbar from "./pages/Navbar";
-import Navbar2 from './pages/Navbar 2';
+
 import { AuthContext } from "./contexts/AuthContext"; // Importa o contexto
 
 function RouteApp() {
@@ -32,7 +32,7 @@ function RouteApp() {
 
   return (
     <BrowserRouter>
-  {isLoggedIn && (isMaster ? <Navbar /> : <Navbar2 />)} {/* Renderiza Navbar ou Navbar2 com base no estado de isMaster */}
+  {isLoggedIn && (<Navbar />)} 
   <Routes>
     <Route path="/" element={<Login />} />
     <Route path="/add" element={isLoggedIn ? <AddDocument /> : <Login />} />
