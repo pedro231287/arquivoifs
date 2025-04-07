@@ -1,58 +1,104 @@
-
-import React from "react";
+import React, { useState } from "react";
+import { db } from "../../firebaseConnection";
+import { collection, query, where, getDocs} from "firebase/firestore";
 import './SearchDocument.css';
 import Navbar from '../Navbar';
 
+function SearchDocument() {
+  const [fundo, setFundo] = useState("");
+  const [codigo, setCodigo] = useState("");
+  const [unidade, setUnidade] = useState("");
+  const [resultados, setResultados] = useState([]);
 
-const SearhDocument = () => {
+  const handlePesquisar = async () => {
+    try {
+      let ref = collection(db, "arquivos");
+      let filtros = [];
+
+      if (codigo.trim()) {
+        filtros.push(where("codigo", "==", parseInt(codigo)));
+      }
+
+      // Firestore permite "prefix search" usando >= e <= com \uf8ff
+      if (fundo.trim()) {
+        filtros.push(where("fundo", ">=", fundo));
+        filtros.push(where("fundo", "<=", fundo + "\uf8ff"));
+      }
+
+      if (unidade.trim()) {
+        filtros.push(where("unidade", ">=", unidade));
+        filtros.push(where("unidade", "<=", unidade + "\uf8ff"));
+      }
+
+      const consulta = filtros.length ? query(ref, ...filtros) : ref;
+      const snap = await getDocs(consulta);
+
+      const dados = snap.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data()
+      }));
+
+      setResultados(dados);
+    } catch (error) {
+      console.error("Erro ao pesquisar:", error);
+    }
+  };
+
   return (
-    <html> 
-      <head>
-        <title>PESQUISAR DOCUMENTO</title>
-      </head> 
-      <body>
-        
-        <Navbar />
-        <div className="campoSearch">
-          <h1>PESQUISA E EDIÇÃO</h1>
-          <br />
-          <label>Tipo de Arquivo:</label>
-          <select>
-            <option value="vazio">-</option>
-            <option value="Corrente">Corrente</option>
-            <option value="Intermediario">Intermediário</option>
-            <option value="Permanente">Permanente</option>
-          </select>
+    <div className="forme">
+      <h2>Pesquisa com Filtro Parcial</h2>
 
-          <label>Nome completo</label>
-          <input type="text" placeholder="email" />
+      <input
+        placeholder="fundo"
+        value={fundo}
+        onChange={(e) => setFundo(e.target.value)}
+      />
+      <input
+        placeholder="codigo"
+        type="number"
+        value={codigo}
+        onChange={(e) => setCodigo(e.target.value)}
+      />
+      <input
+        placeholder="Estado Civil"
+        value={unidade}
+        onChange={(e) => setUnidade(e.target.value)}
+      />
 
-          <label>Setor/campus</label>
-          <input type="text" placeholder="senha" />
+      <button onClick={handlePesquisar} style={{ display: "block", marginTop: 10 }}>
+        Pesquisar
+      </button>
 
-          <label>E-mail</label>
-          <input type="text" placeholder="nome" />
-
-          <label>Telefone</label>
-          <input type="text" placeholder="Telefone" />
-
-          <label>portaria nº</label>
-          <input type="text" placeholder="Portaria" />
-
-          <label>Ano</label>
-          <input type="text" placeholder="Ano" />
-
-          <label>projeto pedagógico</label>
-          <input type="text" placeholder="Projeto Pedagógico" />
-
-          <label>Curso</label>
-          <input type="text" placeholder="Curso" />
-
-          <button>Pesquisar</button>
-        </div>
-      </body>
-    </html>
+      <table border="1" cellPadding="8" style={{ marginTop: 20 }}>
+        <thead>
+          <tr>
+            <th>Caixa</th>
+            <th>Unidade(setor)</th>
+            <th>Assunto</th>
+            <th>excluir</th>
+            <th>editar</th>
+          </tr>
+        </thead>
+        <tbody>
+          {resultados.length === 0 ? (
+            <tr>
+              <td colSpan="3" align="center">Nenhum resultado</td>
+            </tr>
+          ) : (
+            resultados.map((item) => (
+              <tr key={item.id}>
+                <td>{item.fundo}</td>
+                <td>{item.codigo}</td>
+                <td>{item.unidade}</td>
+                <th><button>excluir</button></th>
+                <th><button>editar</button></th>
+              </tr>
+            ))
+          )}
+        </tbody>
+      </table>
+    </div>
   );
-};
+}
 
-export default SearhDocument;
+export default SearchDocument;

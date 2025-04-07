@@ -7,29 +7,7 @@
 body{
     height: 100vh;
 }
-
-.campoSearch{
-    display: flex;
-    flex-direction: column;
-    height: 125vh;
-    background-color: #fff;
-    padding: 20px;
-    margin-left: 300px;
-    align-items: center;
-    justify-content: center;
-}
-label{
-    margin-bottom: 10px;
-}
-input, select {
-    padding: 5px;
-    margin-bottom: 10px;
-    width: 500px;
-}
-button {
-    padding: 10px 20px;
-    border: none;
-    background-color: rgb(65, 78, 131);
-    color: white;
-    cursor: pointer;
+.forme{
+    margin-left: 400px;
+    margin-top: 50px;
 }
