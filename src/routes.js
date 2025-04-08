@@ -24,6 +24,7 @@ function RouteApp() {
       } else {
         setIsLoggedIn(false);
         setIsMaster(false); // Reinicia o estado de master quando o usuário faz logout
+        
       }
     });
 
@@ -34,7 +35,7 @@ function RouteApp() {
     <BrowserRouter>
   {isLoggedIn && (<Navbar />)} 
   <Routes>
-    <Route path="/" element={<Login />} />
+    <Route path="/" element={isLoggedIn ? <SearchDocument /> : <Login />} />
     <Route path="/add" element={isLoggedIn ? <AddDocument /> : <Login />} />
     <Route path="/search" element={isLoggedIn ? <SearchDocument /> : <Login />} />
     <Route path="/createProfile" element={isLoggedIn ? (isMaster ? <ProfileCreator /> : <SearchDocument />) : <Login />} />

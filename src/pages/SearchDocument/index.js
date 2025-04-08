@@ -17,17 +17,20 @@ function SearchDocument() {
 
       if (codigo.trim()) {
         filtros.push(where("codigo", "==", parseInt(codigo)));
-      }
 
-      // Firestore permite "prefix search" usando >= e <= com \uf8ff
-      if (fundo.trim()) {
-        filtros.push(where("fundo", ">=", fundo));
-        filtros.push(where("fundo", "<=", fundo + "\uf8ff"));
       }
-
-      if (unidade.trim()) {
-        filtros.push(where("unidade", ">=", unidade));
-        filtros.push(where("unidade", "<=", unidade + "\uf8ff"));
+      else {
+        // Firestore permite "prefix search" usando >= e <= com \uf8ff
+        if (fundo.trim()) {
+          filtros.push(where("fundo", ">=", fundo));
+          filtros.push(where("fundo", "<=", fundo + "\uf8ff"));
+        }
+        else{
+          if (unidade.trim()) {
+            filtros.push(where("unidade", ">=", unidade));
+            filtros.push(where("unidade", "<=", unidade + "\uf8ff"));
+          }
+        }
       }
 
       const consulta = filtros.length ? query(ref, ...filtros) : ref;
@@ -43,9 +46,10 @@ function SearchDocument() {
       console.error("Erro ao pesquisar:", error);
     }
   };
-
+  
   return (
     <div className="forme">
+      <Navbar />
       <h2>Pesquisa com Filtro Parcial</h2>
 
       <input
@@ -60,7 +64,7 @@ function SearchDocument() {
         onChange={(e) => setCodigo(e.target.value)}
       />
       <input
-        placeholder="Estado Civil"
+        placeholder="Unidade"
         value={unidade}
         onChange={(e) => setUnidade(e.target.value)}
       />
