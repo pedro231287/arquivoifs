@@ -22,7 +22,8 @@ function SearchDocument() {
   
       // Filtrar por fundo (como prefixo), se preenchido
       if (fundo.trim()) {
-        filtros.push(where("fundo", "==", fundo));
+        filtros.push(where("fundo", ">=", fundo));
+        filtros.push(where("fundo", "<=", fundo + "\uf8ff"));
         
       }
   
