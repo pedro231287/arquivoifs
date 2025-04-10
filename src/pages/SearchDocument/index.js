@@ -14,38 +14,39 @@ function SearchDocument() {
     try {
       let ref = collection(db, "arquivos");
       let filtros = [];
-
+  
+      // Filtrar por código exato, se preenchido
       if (codigo.trim()) {
         filtros.push(where("codigo", "==", parseInt(codigo)));
-
       }
-      else {
-        // Firestore permite "prefix search" usando >= e <= com \uf8ff
-        if (fundo.trim()) {
-          filtros.push(where("fundo", ">=", fundo));
-          filtros.push(where("fundo", "<=", fundo + "\uf8ff"));
-        }
-        else{
-          if (unidade.trim()) {
-            filtros.push(where("unidade", ">=", unidade));
-            filtros.push(where("unidade", "<=", unidade + "\uf8ff"));
-          }
-        }
+  
+      // Filtrar por fundo (como prefixo), se preenchido
+      if (fundo.trim()) {
+        filtros.push(where("fundo", "==", fundo));
+        
       }
-
+  
+      // Filtrar por unidade (como prefixo), se preenchido
+      if (unidade.trim()) {
+        filtros.push(where("unidade", ">=", unidade));
+        filtros.push(where("unidade", "<=", unidade + "\uf8ff"));
+      }
+  
+      // Monta a consulta com os filtros aplicáveis
       const consulta = filtros.length ? query(ref, ...filtros) : ref;
       const snap = await getDocs(consulta);
-
+  
       const dados = snap.docs.map((doc) => ({
         id: doc.id,
         ...doc.data()
       }));
-
+  
       setResultados(dados);
     } catch (error) {
       console.error("Erro ao pesquisar:", error);
     }
   };
+  
   
   return (
     <div className="forme">
