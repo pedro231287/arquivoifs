@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import './CadastroCodigo.css';
 import { addDoc, collection, query, where, getDocs, updateDoc, doc } from "firebase/firestore";
 import { db } from "../../firebaseConnection";
-import Navbar from '../Navbar';
+//import Navbar from '../Navbar';
 
 const CadastroCodigo = () => {
   const [tipoCadastro, setTipoCadastro] = useState('');
@@ -116,7 +116,7 @@ const CadastroCodigo = () => {
 
   return (
     <div>
-      <Navbar />
+      
       
       <div className="campoAdd">
         <h1>Cadastro</h1>

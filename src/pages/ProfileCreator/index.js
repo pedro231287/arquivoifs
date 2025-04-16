@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import './ProfileCreator.css';
-import Navbar from '../Navbar';
+//import Navbar from '../Navbar';
 import { auth, db } from "../../firebaseConnection"; // Certifique-se que você está importando corretamente
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { doc, setDoc } from "firebase/firestore"; // Firestore methods para criar documentos
@@ -59,7 +59,7 @@ const ProfileCreator = () => {
       <head>
         <title>CRIAR PERFIL</title>
       </head>
-      <Navbar />
+      
       <div className="campoCreate">
         <h1>CADASTRO DE USUÁRIOS</h1>
         <br />

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import './AddDocument.css';
 import { addDoc, collection, getDocs, query, where } from "firebase/firestore";
 import { db } from "../../firebaseConnection";
-import Navbar from '../Navbar';
+//import Navbar from '../Navbar';
 
 const AddDocument = () => {
   const [codigos, setCodigos] = useState([]);
@@ -90,7 +90,7 @@ const AddDocument = () => {
         <title>ADICIONAR DOCUMENTO</title>
       </head>
       <body>
-        <Navbar />
+        
 
         <div className="campoAdd">
           <h1>ADIÇÃO DE NOVO DOCUMENTO</h1>

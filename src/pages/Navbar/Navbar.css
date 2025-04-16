@@ -1,57 +1,83 @@
 nav.menu_lateral {
-    width: 300px;
+    width: 260px;
     height: 100%;
     background-color: #202020;
-    padding: 20px 0;
     box-shadow: 3px 0 0 rgb(65, 78, 131);
     position: fixed;
     top: 0;
     left: 0;
+    transition: width 0.3s ease;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+nav.menu_lateral.recolhido {
+    width: 70px;
 }
 
 .btn_expandir {
-    width: 100%;
-    padding-left: 10px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+    transition: all 0.3s ease;
+}
+
+nav.menu_lateral.recolhido .btn_expandir {
+    justify-content: center;
+    padding-left: 0;
 }
 
 .btn_expandir > i {
     color: #fff;
-    font-size: 34px;
+    font-size: 35px;
     cursor: pointer;
 }
 
 ul {
-    width: 100%;
-    list-style-type: none;
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
 ul li.iten_menu {
-    padding: 20px 4%;
-    transition: 0.2s;
+    display: flex;
+    align-items: center;
+    padding: 15px 20px;
+    transition: background 0.2s ease;
 }
 
 ul li.iten_menu:hover {
     background-color: rgb(65, 78, 131);
 }
 
-ul li.iten_menu a, 
-ul li.iten_menu .logout-link, 
+ul li.iten_menu a,
+ul li.iten_menu .logout-link,
 ul li.iten_menu .navbar-links {
-    color: #fff !important; /* Força a cor branca nos textos e ícones */
-    text-decoration: none;
-    font-size: 24px;
     display: flex;
     align-items: center;
+    text-decoration: none;
+    color: #fff !important;
     width: 100%;
-    cursor: pointer;
 }
 
-ul li.iten_menu .icon > i, 
+ul li.iten_menu .icon > i,
 ul li.iten_menu .logout-link .icon > i {
-    font-size: 30px; /* Aumenta o tamanho dos ícones */
-    color: #fff !important; /* Força a cor branca nos ícones */
+    font-size: 35px;
+    color: #fff !important;
+    min-width: 30px;
+    text-align: center;
 }
 
 ul li.iten_menu .txt-link {
-    margin-left: 20px;
+    margin-left: 15px;
+    transition: opacity 0.2s ease;
+    white-space: nowrap;
+    font-size: 20px;
+}
+
+nav.menu_lateral.recolhido .txt-link {
+    opacity: 0;
+    pointer-events: none;
 }

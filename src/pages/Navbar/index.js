@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import './Navbar.css';
 import { getAuth, signOut } from "firebase/auth";
@@ -8,6 +8,13 @@ const Navbar = () => {
   const { setIsLoggedIn, isMaster } = useContext(AuthContext);
   const navigate = useNavigate();
   const auth = getAuth();
+
+  const [isExpanded, setIsExpanded] = useState(true);
+
+  const toggleNavbar = () => {
+    setIsExpanded(prev => !prev);
+  };
+
 
   const handleLogout = () => {
     signOut(auth)
@@ -25,9 +32,9 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="menu_lateral">
+    <nav className={`menu_lateral ${isExpanded ? '' : 'recolhido'}`}>
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
-      <div className="btn_expandir">
+      <div className="btn_expandir" onClick={toggleNavbar}>
         <i className="bi bi-list"></i>
       </div>
       <ul>
@@ -47,13 +54,13 @@ const Navbar = () => {
             </li>
             <li className="iten_menu" onClick={() => handleNavigate('/cadastroCodigos')}>
               <div className="navbar-links">
-                <span className="icon"><i className="bi bi-file-earmark-plus-fill"></i></span>
+                <span className="icon"><i className="bi bi-code-slash"></i></span>
                 <span className="txt-link">Cadastro do código</span>
               </div>
             </li>
             <li className="iten_menu" onClick={() => handleNavigate('/addmetadados')}>
               <div className="navbar-links">
-                <span className="icon"><i className="bi bi-file-earmark-plus-fill"></i></span>
+                <span className="icon"><i className="bi bi-card-text"></i></span>
                 <span className="txt-link">Adição de Metadados</span>
               </div>
             </li>
@@ -86,6 +93,7 @@ const Navbar = () => {
       </ul>
     </nav>
   );
+  
 };
 
 export default Navbar;

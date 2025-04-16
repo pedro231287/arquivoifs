@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { db } from "../../firebaseConnection";
 import { collection, query, where, getDocs} from "firebase/firestore";
 import './SearchDocument.css';
-import Navbar from '../Navbar';
+//import Navbar from '../Navbar';
 
 function SearchDocument() {
   const [fundo, setFundo] = useState("");
@@ -51,7 +51,7 @@ function SearchDocument() {
   
   return (
     <div className="forme">
-      <Navbar />
+      
       <h2>Pesquisa com Filtro Parcial</h2>
 
       <input
