@@ -1,6 +1,6 @@
 import React from "react";
 import './Lixeira.css';
-import Navbar from '../Navbar';
+//import Navbar from '../Navbar';
 
 const Lixeira = () => {
   return (
@@ -9,7 +9,7 @@ const Lixeira = () => {
         <title>CRIAR PERFIL</title>
       </head>
       <body>
-        <Navbar />
+       
 
         <div className="campoLixeira">
           <h1>Lixeira</h1>

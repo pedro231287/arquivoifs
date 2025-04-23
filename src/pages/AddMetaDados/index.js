@@ -1,13 +1,10 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import './AddMetaDados.css';
 import { addDoc, collection, getDocs } from "firebase/firestore";
 import { db } from "../../firebaseConnection";
-import Navbar from '../Navbar';
-import { AuthContext } from "../../contexts/AuthContext";
+// import { AuthContext } from "../../contexts/AuthContext"; // Removido porque não está sendo usado
 
 const AddMetaDados = () => {
-  const listRef = collection(db, "codigos");
-  const { user } = useContext(AuthContext);
   const [loadCodigo, setLoadCodigo] = useState(true);
   const [codigo, setCodigo] = useState([]);
   const [codigoSelected, setCodigoSelected] = useState('');
@@ -59,6 +56,7 @@ const AddMetaDados = () => {
   };
 
   useEffect(() => {
+    const listRef = collection(db, "codigos");
     const loadCodigo = async () => {
       try {
         const querySnapshot = await getDocs(listRef);
@@ -95,7 +93,6 @@ const AddMetaDados = () => {
 
   return (
     <div>
-      <Navbar />
       <div className="campoAdd">
         <h1>Adição de Metadados por Código</h1>
         <form onSubmit={adicionar}>
@@ -128,5 +125,3 @@ const AddMetaDados = () => {
 };
 
 export default AddMetaDados;
-
-

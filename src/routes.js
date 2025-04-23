@@ -31,7 +31,7 @@ function RouteApp() {
   }, [auth, setIsLoggedIn, setIsMaster]);
 
   return (
-    <BrowserRouter>
+  <BrowserRouter>
   {isLoggedIn && (<Navbar />)} 
   <Routes>
     <Route path="/" element={isLoggedIn ? <SearchDocument /> : <Login />} />

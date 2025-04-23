@@ -2,16 +2,16 @@ import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../firebaseConnection";
-import { getFirestore, collection, getDocs, query, where } from "firebase/firestore";
+//import { getFirestore } from "firebase/firestore";
 import { AuthContext } from "../../contexts/AuthContext"; // Importando o contexto de autenticação
 import './Login.css';
 
 const Login = () => {
-  const { setIsLoggedIn, setIsMaster } = useContext(AuthContext); // Obtendo as funções do contexto
+  const { setIsLoggedIn } = useContext(AuthContext); // Obtendo as funções do contexto
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
   const navigate = useNavigate();
-  const db = getFirestore(); // Instância do Firestore
+  //const db = getFirestore(); // Instância do Firestore
 
   const changeInput = (event) => {
     const { id, value } = event.target;
@@ -32,14 +32,8 @@ const Login = () => {
 
     try {
       // Autenticação com Firebase
-      const userCredential = await signInWithEmailAndPassword(auth, email, senha);
-      const user = userCredential.user;
-
-      // Verificar se o usuário é master
-      const masterQuery = query(collection(db, "master"), where("email", "==", email));
-      const querySnapshot = await getDocs(masterQuery);
-
-      setIsMaster(!querySnapshot.empty); // Define como master se encontrado
+      await signInWithEmailAndPassword(auth, email, senha);
+      
       setIsLoggedIn(true); // Usuário logado com sucesso
       navigate("/search"); // Navega para a página de pesquisa
     } catch (error) {

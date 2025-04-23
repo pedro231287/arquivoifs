@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import './Perfil.css';
-import Navbar from '../Navbar';
+//import Navbar from '../Navbar';
 
 import { doc, getDoc } from "firebase/firestore";
 import { auth, db } from "../../firebaseConnection"; 
@@ -75,7 +75,7 @@ const Perfil = () => {
         <title>CRIAR PERFIL</title>
       </head>
       <body>
-        <Navbar />
+        
 
         <div className="campoPerfil">
           <h1>Perfil de Usuário</h1>
