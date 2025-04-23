@@ -98,12 +98,6 @@ const Navbar = () => {
             <span className="txt-link">Pesquisa e edição</span>
           </div>
         </li>
-        <li className="iten_menu" onClick={() => handleNavigate('/lixeira')}>
-          <div className="navbar-links">
-            <span className="icon"><i className="bi bi-trash"></i></span>
-            <span className="txt-link">Lixeira</span>
-          </div>
-        </li>
         <li className="iten_menu" onClick={handleLogout}>
           <div className="logout-link">
             <span className="icon"><i className="bi bi-box-arrow-in-left"></i></span>

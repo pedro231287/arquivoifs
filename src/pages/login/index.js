@@ -51,13 +51,14 @@ const Login = () => {
 
   return (
     <div id="container">
-      <div id="back-img">
-        <img id="note" src="/img-sipac.png" alt="imagem" />
-      </div>
-      <div id="asside">
+      <div className="blocolateral">
         <div id="logo">
-          <img id="ifs" src="/brasao_ifs_vertical.png" alt="marca" />
+          <img id="ifs" src="/marca Dinove vertical branca 1.png" alt="marca" />
         </div>
+        <div className="blocolateral_texto">
+          Bem vindo
+        </div>
+      </div>
         <div id="formulario">
           <form onSubmit={enviar}>
             <input
@@ -73,19 +74,19 @@ const Login = () => {
             <input
               id="senha"
               className="loginInput"
-              placeholder="Digite sua senha"
+              placeholder="Insira sua senha"
               type="password"
               value={senha}
               onChange={changeInput}
               required
             />
             <br />
-            <button id="loginButton" type="submit">
-              Entrar
-            </button>
+            <button id="loginButton" type="submit">Acessar</button>
           </form>
+          <div>
+            recuperar senha
+          </div>
         </div>
-      </div>
     </div>
   );
 };

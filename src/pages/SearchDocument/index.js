@@ -81,8 +81,8 @@ function SearchDocument() {
             <th>Caixa</th>
             <th>Unidade(setor)</th>
             <th>Assunto</th>
-            <th>excluir</th>
             <th>editar</th>
+            <th>eliminar ou eliminado</th>
           </tr>
         </thead>
         <tbody>
@@ -96,8 +96,8 @@ function SearchDocument() {
                 <td>{item.fundo}</td>
                 <td>{item.codigo}</td>
                 <td>{item.unidade}</td>
-                <th><button>excluir</button></th>
                 <th><button>editar</button></th>
+                <th><button>Eliminar ou restaurar</button></th>
               </tr>
             ))
           )}
