@@ -9,7 +9,7 @@ const Navbar = () => {
   const navigate = useNavigate();
   const auth = getAuth();
 
-  const [isExpanded, setIsExpanded] = useState(true);
+  const [isExpanded, setIsExpanded] = useState(false);
 
   const toggleNavbar = () => {
     setIsExpanded(prev => !prev);
